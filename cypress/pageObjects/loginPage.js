@@ -19,10 +19,24 @@ class LoginPage {
         return cy.get('.MuiInputBase-root');
     }
 
-   
-
     getConfirmAndContinue(){
         return cy.get('.MuiButton-text');
+    }
+
+    getEyeIcon(){
+        return cy.get('._eyeIcon_twnrd_300 > img');
+    }
+
+    getLanguage(){
+        return cy.get('.MuiContainer-root > :nth-child(2)')
+    }
+
+    getRate(){
+        return cy.get(':nth-child(1) > .MuiPaper-root');
+    }
+
+    getPaymonthly(){
+        return cy.get(':nth-child(1) > .MuiPaper-root');
     }
 
     // Actions
@@ -51,14 +65,33 @@ class LoginPage {
         this.getConfirmAndContinue().click();
     }
 
+    clickOnEyeIcon(){
+        this.getEyeIcon().click();
+    }
+
+    clickOnLanguageSelection(){
+        this.getLanguage().click();
+    }
+
+    clickRatesSelection(){
+        this.getRate().click();
+    }
+
+    clickPaymonthly(){
+        this.getPaymonthly().click();
+    }
+
     // Method to perform login
     login(username, password) {
         this.selectCountryRates();
         this.enterEmail(username);
         this.clickLoginButton();
-        this.enterPassword(password);
-        this.getConfirmAndContinue();
-       
+      this.clickOnEyeIcon();
+      this.enterPassword(password);
+      this.clickConfirmAndContinue();
+      this.clickOnLanguageSelection();
+      this.clickRatesSelection();
+       this.clickPaymonthly();
     }
 }
 
