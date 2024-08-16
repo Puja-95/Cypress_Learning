@@ -1,0 +1,11 @@
+stages:
+  - test
+
+cypress:
+  image: cypress/browsers:node14.17.6-chrome91-ff89
+  stage: test
+  script:
+    - npm install
+    - npm run cypress:run
+  variables:
+    CYPRESS_BASE_URL: $CYPRESS_BASE_URL
