@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "cypress": "^13.13.2"
+  },
+  
+    "scripts": {
+      "test": "cypress open",
+      "test:run": "cypress run"
+    }
+  
+}
