@@ -1,5 +1,6 @@
 import LoginPage from '../pageObjects/loginPage';
 import DashboardPage from '../pageObjects/dashboardPage';
+import config from '../fixtures/config.json'
 
 describe('Login Tests', () => {
     beforeEach(() => {
@@ -8,11 +9,11 @@ describe('Login Tests', () => {
         })
     });
     it('should login successfully with valid credentials', () => {
-        LoginPage.login('admin-lyca@yopmail.com', 'wlKfwsX7fY');
+        LoginPage.login(config.emailId, config.password);
     });
 
     it('should verify dashboard page for rates and paymonthly selection', ()=>{
-    LoginPage.login('admin-lyca@yopmail.com', 'wlKfwsX7fY');
+    LoginPage.login(config.emailId, config.password);
     DashboardPage.dashboard();
     })
 });
