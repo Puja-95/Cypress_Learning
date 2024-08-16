@@ -1,15 +1,18 @@
 import LoginPage from '../pageObjects/loginPage';
-//import DashboardPage from '../pageObjects/dashboardPage';
+import DashboardPage from '../pageObjects/dashboardPage';
 
 describe('Login Tests', () => {
-    it('should login successfully with valid credentials', () => {
-        // Visit the login page
-        cy.visit('https://dt-admin-dev.ldsvcplatform.com/en/login');
-
-        // Use the page object methods to interact with the page
-        LoginPage.login('admin-lyca@yopmail.com', 'wlKfwsX7fY');
-
-        // Verify the login was successful
-       // DashboardPage.verifyWelcomeMessage('Welcome, validUsername!');
+    beforeEach(() => {
+        cy.fixture('config').then((config) => {
+            cy.visit(config.baseUrl);
+        })
     });
+    it('should login successfully with valid credentials', () => {
+        LoginPage.login('admin-lyca@yopmail.com', 'wlKfwsX7fY');
+    });
+
+    it('should verify dashboard page for rates and paymonthly selection', ()=>{
+    LoginPage.login('admin-lyca@yopmail.com', 'wlKfwsX7fY');
+    DashboardPage.dashboard();
+    })
 });
